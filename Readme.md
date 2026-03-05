@@ -208,9 +208,6 @@ Multi-course support (Python, ML, Data Science)
 
 Ayush Borse
 
-Electronics and Telecommunication Engineering
-Interested in AI, Data Science, and Intelligent Systems
-
 📧 Email: ayushborse40@gmail.com
 
 ⭐ If you found this project useful, consider starring the repository.
