@@ -1,1 +1,9 @@
-I can help you with that. The concept of lambda functions is discussed in Video 5, specifically starting at 10.7 seconds and going until 14.4 seconds.
+You're interested in learning about string methods in Python.
+
+In Video #4, we start by understanding what strings are in Python, but I didn't directly explain the term "string method". However, towards the end of the video (around 9 minutes and 30 seconds), we cover some basics about working with strings in Python.
+
+More specifically, at around 3 minutes and 15 seconds into Video #4, we start discussing how to put variables inside a string using f-strings. You can check out that part of the video if you'd like to learn more about it.
+
+Another way to work with strings is by using the built-in methods provided by Python's string class, such as `upper()`, `lower()`, or `strip()`.
+
+Would you like me to guide you through some examples of how to use these methods?

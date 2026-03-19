@@ -1,221 +1,188 @@
-🎓 RAG AI Teaching Assistant for Python Lectures
-Built with Llama 3.2
+# 📚 RAG-Based AI Teaching Assistant
 
+<div align="center">
 
+![GitHub stars](https://img.shields.io/github/stars/AyushBorse/RAG-Based-AI-Teaching-Assistant?style=for-the-badge)](https://github.com/AyushBorse/RAG-Based-AI-Teaching-Assistant/stargazers)
 
+[![GitHub forks](https://img.shields.io/github/forks/AyushBorse/RAG-Based-AI-Teaching-Assistant?style=for-the-badge)](https://github.com/AyushBorse/RAG-Based-AI-Teaching-Assistant/network)
 
+[![GitHub issues](https://img.shields.io/github/issues/AyushBorse/RAG-Based-AI-Teaching-Assistant?style=for-the-badge)](https://github.com/AyushBorse/RAG-Based-AI-Teaching-Assistant/issues)
 
+[![GitHub license](https://img.shields.io/github/license/AyushBorse/RAG-Based-AI-Teaching-Assistant?style=for-the-badge)](LICENSE) <!-- TODO: Add actual license file and link -->
 
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python)](https://www.python.org/)
 
+**Leverage Retrieval-Augmented Generation (RAG) to create an intelligent AI teaching assistant from video and audio content.**
 
-An AI-powered Retrieval Augmented Generation (RAG) Teaching Assistant that answers questions from Python lecture videos.
+</div>
 
-This project processes lecture videos and converts them into searchable knowledge. Users can ask questions, and the system retrieves the most relevant lecture segments and generates answers using Llama 3.2.
+## 📖 Overview
 
-This allows students to interact with lecture content like a chatbot instead of manually searching through videos.
+The RAG-Based AI Teaching Assistant is a Python-powered workflow designed to transform educational video and audio materials into an interactive knowledge base. It processes raw media (videos, MP3s), transcribes them, extracts relevant information, and then uses a Retrieval-Augmented Generation (RAG) system to answer user queries based on this content. This project enables educators and learners to create dynamic Q&A systems from their existing media archives, providing a personalized and efficient learning experience.
 
-🚀 Features
+## ✨ Features
 
-📹 Process Python lecture videos
+-   **Video to Audio Conversion**: Automatically converts video files (e.g., lectures, tutorials) into MP3 audio format.
+-   **Audio Transcription**: Transcribes MP3 audio files into structured JSON text data, making spoken content searchable and processable.
+-   **Text Preprocessing & Embedding**: Preprocesses transcribed text, chunking it into manageable segments and generating vector embeddings for efficient semantic search.
+-   **Intelligent RAG Querying**: Utilizes the Retrieval-Augmented Generation (RAG) pattern to retrieve contextually relevant information from the processed knowledge base and synthesize accurate, informed responses using a Large Language Model (LLM).
+-   **Customizable AI Prompt**: Allows easy modification of the AI's core instructions, persona, and response guidelines via a dedicated `prompt.txt` file.
+
+## 🛠️ Tech Stack
+
+This project is built primarily with Python and leverages several powerful tools and concepts for media processing and AI capabilities.
+
+**Core Technologies:**
+-   **Python**: The primary programming language for all scripts and orchestration.
+-   **Retrieval-Augmented Generation (RAG)**: The architectural pattern enhancing LLM responses with external, domain-specific knowledge.
+-   **Large Language Models (LLMs)**: Utilized for generating answers based on retrieved context (e.g., OpenAI GPT series, Llama, etc. - *requires external API access*).
+-   **Vector Store/Database**: (Inferred for RAG) For efficient storage and semantic search of document embeddings (e.g., ChromaDB, FAISS).
+-   **ffmpeg**: (External dependency) A robust, open-source tool essential for handling video and audio file conversions.
 
-🎧 Convert videos into MP3 audio
+**Inferred Python Libraries (Common for this domain):**
+-   [`python-dotenv`](https://pypi.org/project/python-dotenv/): For managing environment variables.
+-   [`pydub`](https://pypi.org/project/pydub/): For high-level audio manipulation in Python.
+-   [`SpeechRecognition`](https://pypi.org/project/SpeechRecognition/) / [`transformers`](https://huggingface.co/docs/transformers/model_doc/whisper) (Whisper): For converting speech to text.
+-   [`LangChain`](https://python.langchain.com/) / [`LlamaIndex`](https://www.llamaindex.ai/): For orchestrating the RAG pipeline, including document loading, chunking, embedding, and LLM integration.
+-   [`openai`](https://pypi.org/project/openai/): Python client for OpenAI API interaction.
 
-📝 Generate JSON transcripts
+## 🚀 Quick Start
 
-🧠 Create vector embeddings
+Follow these steps to set up and run the RAG-Based AI Teaching Assistant locally.
 
-🔎 Retrieve relevant lecture content
+### Prerequisites
+-   **Python 3.8+**: Ensure Python is installed on your system.
+-   **pip**: Python package installer.
+-   **ffmpeg**: Required for video-to-audio conversion. Install it via your system's package manager (e.g., `sudo apt install ffmpeg` on Ubuntu, `brew install ffmpeg` on macOS, or download from [ffmpeg.org](https://ffmpeg.org/download.html)).
+-   **OpenAI API Key** (or similar LLM provider): Essential for interacting with the Large Language Model.
 
-🤖 Generate contextual answers using Llama 3.2
+### Installation
 
-📚 Works like a personal AI tutor for Python
+1.  **Clone the repository**
+    ```bash
+    git clone https://github.com/AyushBorse/RAG-Based-AI-Teaching-Assistant.git
+    cd RAG-Based-AI-Teaching-Assistant
+    ```
 
-🧠 System Architecture
-Video Lectures
-      │
-      ▼
-Convert Video → MP3
-      │
-      ▼
-Speech to Text
-(JSON Transcripts)
-      │
-      ▼
-Generate Embeddings
-      │
-      ▼
-Store in Vector Dataset
-(Joblib DataFrame)
-      │
-      ▼
-User Question
-      │
-      ▼
-Retrieve Relevant Context
-      │
-      ▼
-Generate Answer with Llama 3.2
-📂 Project Pipeline
-Step 1 — Collect Videos
+2.  **Install Python dependencies**
+    *   **Note**: A `requirements.txt` file is not present in this repository, which typically lists all necessary Python libraries. You will need to manually install the libraries required for your chosen speech-to-text, LLM integration, and embedding models.
+    *   **Example common installations**:
+        ```bash
+        pip install python-dotenv pydub SpeechRecognition moviepy # Basic media/env
+        pip install langchain openai chromadb # Example RAG-related libraries
+        # Add any other specific libraries based on your implementation
+        ```
 
-Move all Python lecture videos into the videos/ folder.
+3.  **Environment setup**
+    Create a `.env` file in the project's root directory to store your API keys and other sensitive configurations.
+    ```bash
+    # .env example
+    OPENAI_API_KEY="YOUR_OPENAI_API_KEY_HERE"
+    # Add other keys/configs as needed, e.g., HUGGINGFACE_API_KEY, ANTHROPIC_API_KEY
+    ```
 
-videos/
-   python_lecture1.mp4
-   python_lecture2.mp4
-Step 2 — Convert Videos to MP3
+### Usage Workflow
 
-Run the script:
+The project consists of several Python scripts designed to be executed in a logical sequence to build and interact with the AI Teaching Assistant.
 
-python video_to_mp3.py
+1.  **Convert Video to MP3 (Optional)**
+    If your source material is in video format, convert it to an MP3 audio file first.
+    ```bash
+    python video_to_mp3.py <input_video_path> <output_mp3_path>
+    ```
+    *Example:* `python video_to_mp3.py "path/to/my_lecture.mp4" "path/to/my_lecture.mp3"`
 
-This converts all videos into audio files.
+2.  **Transcribe MP3 to JSON**
+    Transcribe the MP3 audio files into a JSON format containing the raw text. This JSON will serve as the initial raw data for your knowledge base.
+    ```bash
+    python mp3_to_json.py <input_mp3_path> <output_json_path>
+    ```
+    *Example:* `python mp3_to_json.py "path/to/my_lecture.mp3" "path/to/my_lecture_transcript.json"`
 
-Output:
+3.  **Preprocess JSON Data**
+    Process the generated JSON transcript. This script is responsible for steps like chunking the text into smaller, manageable pieces, generating vector embeddings for each chunk, and storing these embeddings in a vector database for efficient retrieval.
+    ```bash
+    python preprocess_json.py <input_json_path>
+    ```
+    *Example:* `python preprocess_json.py "path/to/my_lecture_transcript.json"`
 
-audio/
-   python_lecture1.mp3
-   python_lecture2.mp3
-Step 3 — Convert MP3 to JSON Transcript
+4.  **Process Incoming Query (RAG)**
+    This is the core script for running the RAG process. It takes a user query, performs a semantic search on your vector store to retrieve relevant document chunks, and then uses an LLM (guided by `prompt.txt`) to synthesize an informed answer.
+    ```bash
+    python process_incoming.py "<your_query_here>"
+    ```
+    *Example:* `python process_incoming.py "What were the key takeaways from the discussion on historical events?"`
 
-Run:
+    The `prompt.txt` file is dynamically loaded by `process_incoming.py` to establish the LLM's role and provide specific instructions, ensuring the AI maintains the persona of a teaching assistant.
 
-python mp3_to_json.py
+## 📁 Project Structure
 
-This converts audio into text transcripts and stores them as JSON.
+```
+RAG-Based-AI-Teaching-Assistant/
+├── .gitignore               # Specifies intentionally untracked files to ignore
+├── Readme.md                # Project documentation (this file)
+├── mp3_to_json.py           # Script to transcribe MP3 audio to JSON
+├── preprocess_json.py       # Script for preparing JSON data for RAG (chunking, embeddings)
+├── process_incoming.py      # Main script for handling RAG queries and generating responses
+├── prompt.txt               # Customizable AI prompt/system message for the LLM
+├── response.txt             # Placeholder or example for AI response output
+├── video_to_mp3.py          # Script to convert video files to MP3 format
+└── unused/                  # An empty directory (currently unused, may be for future features)
+```
 
-Example output:
+## ⚙️ Configuration
 
-transcripts/
-   lecture1.json
-   lecture2.json
+### Environment Variables
+The `.env` file, which you will create, is used to store sensitive information and API keys required by the scripts.
 
-Example JSON structure:
+| Variable | Description | Default | Required |
 
-{
-  "timestamp": "00:01:23",
-  "text": "In Python, lists are used to store multiple items in a single variable."
-}
-Step 4 — Generate Vector Embeddings
+|----------|-------------|---------|----------|
 
-Run:
+| `OPENAI_API_KEY` | Your API key for accessing OpenAI's Large Language Models. | None | Yes |
 
-python preprocess_json.py
+| `[OTHER_LLM_API_KEY]` | API key for alternative LLM providers (e.g., Anthropic, Hugging Face). | None | No |
 
-This script:
+### Configuration Files
+-   **`prompt.txt`**: This critical file contains the system prompt for the Large Language Model. Customize this file to define the AI's persona, its guiding principles, specific instructions for answering questions, and its overall teaching style.
 
-Reads all transcript JSON files
+## 🤝 Contributing
 
-Converts text into vector embeddings
+We welcome contributions to enhance the RAG-Based AI Teaching Assistant! If you're interested in improving this project, please consider:
 
-Stores embeddings in a DataFrame
+-   Adding support for more media types (e.g., PDF, DOCX).
+-   Integrating different speech-to-text services or local models.
+-   Implementing various vector store options.
+-   Improving the RAG pipeline with advanced chunking or retrieval strategies.
+-   Enhancing the prompt engineering.
 
-Saves the result as a Joblib pickle file
+Please see our [Contributing Guide](CONTRIBUTING.md) <!-- TODO: Create CONTRIBUTING.md --> for details on how to get started.
 
-Output:
+### Development Setup for Contributors
+Ensure you have all prerequisites installed and follow the "Quick Start" installation steps. Focus on maintaining modularity and clear code for each processing step.
 
-embeddings.pkl
-Step 5 — Query the AI Assistant
+## 📄 License
 
-When a user asks a question:
+This project is currently without a specified license. Please consider adding a `LICENSE` file to define the terms of use and distribution. <!-- TODO: Add actual license file and link -->
 
-Load the embeddings file
+## 🙏 Acknowledgments
 
-Retrieve the most relevant transcript segments
+-   The developer, [AyushBorse](https://github.com/AyushBorse), for initiating this valuable project.
+-   The open-source community for providing powerful Python libraries and tools that make advanced AI applications like RAG possible.
+-   The research on [Retrieval-Augmented Generation (RAG)](https://arxiv.org/abs/2005.11401) for the fundamental architectural pattern.
 
-Create a prompt with context
+## 📞 Support & Contact
 
-Send it to Llama 3.2
+-   🐛 Issues: For bug reports or feature requests, please use the [GitHub Issues](https://github.com/AyushBorse/RAG-Based-AI-Teaching-Assistant/issues) page.
 
-Generate an answer
+---
 
-Example:
+<div align="center">
 
-User: What is a Python list?
+**⭐ Star this repo if you find it helpful!**
 
-The assistant searches lecture transcripts and returns the most relevant explanation.
+Made with ❤️ by [AyushBorse](https://github.com/AyushBorse)
 
-📁 Project Structure
-rag-python-teaching-assistant
-│
-├── videos/
-│
-├── audio/
-│
-├── transcripts/
-│
-├── video_to_mp3.py
-├── mp3_to_json.py
-├── preprocess_json.py
-│
-├── embeddings.pkl
-│
-└── README.md
-⚙️ Installation
+</div>
+```
 
-Clone the repository:
-
-git clone https://github.com/yourusername/rag-python-teaching-assistant.git
-
-Navigate into the project folder:
-
-cd rag-python-teaching-assistant
-
-Install required dependencies:
-
-pip install -r requirements.txt
-🧰 Technologies Used
-
-Python
-
-Llama 3.2
-
-Retrieval Augmented Generation (RAG)
-
-Speech-to-Text
-
-Embeddings
-
-Joblib
-
-Pandas
-
-💡 Use Cases
-
-AI tutor for Python programming
-
-Lecture Q&A assistant
-
-Educational chatbot
-
-Knowledge retrieval system for courses
-
-Interactive learning tool
-
-🔮 Future Improvements
-
-Add FAISS / Chroma vector database
-
-Web interface using Streamlit
-
-Upload YouTube lectures automatically
-
-Add real-time question answering
-
-Multi-course support (Python, ML, Data Science)
-
-👨‍💻 Author
-
-Ayush Borse
-
-Electronics and Telecommunication Engineering
-Interested in AI, Data Science, and Intelligent Systems
-
-📧 Email: ayushborse40@gmail.com
-
-⭐ If you found this project useful, consider starring the repository.
-Use the file preprocess_json to convert the json files to a dataframe with Embeddings and save it as a joblib pickle
-
-## Step 5 - Prompt generation and feeding to LLM
-
-Read the joblib file and load it into the memory. Then create a relevant prompt as per the user query and feed it to the LLM
